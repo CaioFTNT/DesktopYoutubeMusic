@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+  <style media="screen">
+    body {
+      background-color: #17181f;
+      margin: 0px;
+      font-family: sans-serif;
+
+    }
+    header{
+      background-color: #282A36;
+      height: 30px;
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+    }
+    header span {
+      color: #777;
+      flex: 1;
+      line-height: 30px;
+      -webkit-app-region: drag;
+    }
+    header ul {
+      display: flex;
+      list-style-type: none;
+      padding: 0px;
+    }
+    header ul li button {
+      width: 40px;
+      height: 30px;
+      background-color: #0000;
+      text-align: center;
+      line-height: 30px;
+      border: none;
+      color: #fff;
+      transition: 0.1s all;
+    }
+    header ul li button:hover {
+      background-color: #d33;
+    }
+    header ul li button:active {
+      background-color: #daa;
+    }
+    h1 {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span>YoutubeMusic</span>
+    <ul>
+      <li><button id='min'>_</button></li>
+      <li><button id='max'>[ ]</button></li>
+      <li><button id='close'>X</button></li>
+    </ul>
+  </header>
+  <h1>erro</h1>
+  <script type="text/javascript">
+    const { ipcRenderer } = require('electron');
+    document.getElementById('min').addEventListener('click', ()=>{
+      console.log('pinto');
+      ipcRenderer.send('min')
+    })
+    document.getElementById('max').addEventListener('click', ()=>{
+      ipcRenderer.send('max')
+    })
+    document.getElementById('close').addEventListener('click', ()=>{
+      ipcRenderer.send('close')
+    })
+  </script>
+</body>
